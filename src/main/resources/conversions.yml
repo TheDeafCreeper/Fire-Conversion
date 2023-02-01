@@ -1,0 +1,41 @@
+# Materials use their name found @ https://jd.papermc.io/paper/1.19/org/bukkit/Material.html
+# Usually, it's just ITEM_ID, however if that does not work you can look it up at the linked page.
+# DO NOT USE LEGACY_MATERIAL
+
+# Example Conversion:
+# ConversionBoth:
+#   sources:
+#     - WHITE_WOOL
+#   result:
+#     normal: RED_WOOL
+#     soul: BLUE_WOOL
+
+# ConversionJustOne:
+#   sources:
+#     - WHITE_WOOL
+#   result:
+#     normal: RED_WOOL
+#     soul: NONE
+
+# ConversionMultipleSources:
+#   sources:
+#     - WHITE_WOOL
+#     - BLUE_WOOL
+#     - PINK_WOOL
+#     - YELLOW_WOOL
+#   result:
+#     normal: RED_WOOL
+#     soul: NONE
+
+WoodToNetherWood:
+  sources:
+    - ACACIA_LOG
+    - BIRCH_LOG
+    - DARK_OAK_LOG
+    - JUNGLE_LOG
+    - MANGROVE_LOG
+    - OAK_LOG
+    - SPRUCE_LOG
+  result:
+    normal: CRIMSON_STEM
+    soul: WARPED_STEM
