@@ -5,26 +5,10 @@
 # Example Conversion:
 # ConversionBoth:
 #   sources:
-#     - WHITE_WOOL
+#     - MATERIAL_1
+#     - MATERIAL_2
 #   result:
-#     normal: RED_WOOL
-#     soul: BLUE_WOOL
-
-# ConversionJustOne:
-#   sources:
-#     - WHITE_WOOL
-#   result:
-#     normal: RED_WOOL
-#     soul: NONE
-
-# ConversionMultipleSources:
-#   sources:
-#     - WHITE_WOOL
-#     - BLUE_WOOL
-#     - PINK_WOOL
-#     - YELLOW_WOOL
-#   result:
-#     normal: RED_WOOL
+#     normal: NONE
 #     soul: NONE
 
 WoodToNetherWood:
