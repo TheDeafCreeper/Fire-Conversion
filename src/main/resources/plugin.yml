@@ -1,0 +1,8 @@
+name: Fireconversion
+version: '${project.version}'
+main: com.thedeafcreeper.fireconversion.FireConversion
+api-version: 1.19
+prefix: FireConvert
+authors: [ TheDeafCreeper ]
+description: Converts items by throwing them in fire.
+website: thedeafcreeper.com
