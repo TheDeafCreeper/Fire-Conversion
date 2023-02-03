@@ -6,10 +6,10 @@
 
     <groupId>com.thedeafcreeper</groupId>
     <artifactId>fireconversion</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>Fireconversion</name>
+    <name>FireConversion</name>
 
     <description>Converts items by throwing them in fire.</description>
     <properties>
