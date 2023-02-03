@@ -10,7 +10,7 @@ import java.util.*
 class Listener: Listener {
     var conversions: MutableMap<Material, Conversion> = EnumMap(org.bukkit.Material::class.java)
 
-    val illegalMaterial = listOf(
+    private val illegalMaterial = listOf(
         Material.AIR,
         Material.CAVE_AIR,
         Material.VOID_AIR
@@ -23,23 +23,23 @@ class Listener: Listener {
         val entity = event.entity as Item
         val itemStack = entity.itemStack
 
-        if (conversions.containsKey(itemStack.type)) {
-            val conversion = conversions[itemStack.type]!!
-            val fireType = entity.world.getType(entity.location)
-            entity.isInvulnerable = true
+        if (!conversions.containsKey(itemStack.type)) return
 
-            when (fireType) {
-                Material.FIRE -> {
-                    if (conversion.regularFire != null && !illegalMaterial.contains(conversion.regularFire)) itemStack.type = conversion.regularFire
-                }
-                Material.SOUL_FIRE -> {
-                    if (conversion.soulFire != null && !illegalMaterial.contains(conversion.soulFire)) itemStack.type = conversion.soulFire
-                }
-                else -> entity.isInvulnerable = false
+        val conversion = conversions[itemStack.type]!!
+        val fireType = entity.world.getType(entity.location)
+        entity.isInvulnerable = true
+
+        when (fireType) {
+            Material.FIRE -> {
+                if (conversion.regularFire != null && !illegalMaterial.contains(conversion.regularFire)) itemStack.type = conversion.regularFire
             }
-
-            entity.itemStack = itemStack
+            Material.SOUL_FIRE -> {
+                if (conversion.soulFire != null && !illegalMaterial.contains(conversion.soulFire)) itemStack.type = conversion.soulFire
+            }
+            else -> entity.isInvulnerable = false
         }
+
+        entity.itemStack = itemStack
     }
 
     data class Conversion(val regularFire: Material?, val soulFire: Material?)
