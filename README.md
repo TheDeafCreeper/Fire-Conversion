@@ -2,7 +2,7 @@
 Allows you to convert items from one to another using fire.
 
 # Configuration
-The only configeration file is conversions.yml
+The only configuration file is conversions.yml
 Every conversion uses one of the following setups:
 
 ```yaml
@@ -43,7 +43,8 @@ DiamondOreToDiamond:
       - DIAMOND-2-3 # 21.4% chance of dropping 2
       - DIAMOND-3-1 # and 7.1% chance of dropping 3
 ```
-You can figure out the precentage from the weight by doing WEIGHT/TOTAL_WEIGHT, for example 10/(10+3+1) = 0.714... (x100 for the percentage)
+You can figure out the percentage from the weight by doing WEIGHT/TOTAL_WEIGHT, for example 10/(10+3+1) = 0.714... (x100 for the percentage)
+
 You can also leave one of the results as NONE (or any other invalid material), but must have at least 1 source and 1 result.
 
 If a source shows up multiple times, then it will use the results for the last conversion in the list.
