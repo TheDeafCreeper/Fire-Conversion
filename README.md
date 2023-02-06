@@ -14,9 +14,9 @@ ConversionName: # Can be whatever you want, needs to be unique though.
     - MATERIAL_1
     - MATERIAL_2
   result:
-    normal: MATERIAL-AMOUNT # The result of throwing one of the sources into normal (orange) fire.
-                            # The amount is optional, and defaults to 1 if not set.
+    normal: MATERIAL # The result of throwing one of the sources into normal (orange) fire.
     soul: MATERIAL # The result of throwing one of the sources into soul (blue) fire.
+    #You can define an amount of material by doing MATERIAL-AMOUNT, it defaults to 1.
 
 # Complex Conversion
 ConversionName:
