@@ -41,13 +41,32 @@ class FireConversion : JavaPlugin() {
 
             val keys = conversionsConfig.getKeys(false)
             for (key in keys) {
-                val resultNormal = conversionsConfig.getString("$key.result.normal")
-                val resultSoul = conversionsConfig.getString("$key.result.soul")
+                val resultsNormal: MutableList<String> = ArrayList()
+                val resultsSoul: MutableList<String> = ArrayList()
+
+                if (conversionsConfig.contains("$key.result.normal")) {
+                    if (conversionsConfig.isString("$key.result.normal")) resultsNormal.add(conversionsConfig.getString("$key.result.normal")!!)
+                    else if (conversionsConfig.isList("$key.result.normal")) {
+                        resultsNormal.addAll(conversionsConfig.getStringList("$key.result.normal"))
+                    }
+                }
+
+                if (conversionsConfig.contains("$key.result.soul")) {
+                    if (conversionsConfig.isString("$key.result.soul")) resultsSoul.add(conversionsConfig.getString("$key.result.soul")!!)
+                    else if (conversionsConfig.isList("$key.result.soul")) {
+                        resultsSoul.addAll(conversionsConfig.getStringList("$key.result.soul"))
+                    }
+                }
+
                 val sources = conversionsConfig.getStringList("$key.sources")
                 if (sources.isEmpty()) continue
-                if (resultNormal == null && resultSoul == null) continue
 
-                val conversion = Listener.Conversion(Material.matchMaterial(resultNormal ?: ""), Material.matchMaterial(resultSoul ?: ""))
+                val conversion = Listener.Conversion(resultsNormal, resultsSoul, listener.illegalMaterial)
+                if (conversion.regularResults.isEmpty() && conversion.soulResults.isEmpty()) {
+                    logger.warning("Conversion $key has no valid results! Skipping...")
+                    continue
+                }
+
                 for (source in sources) {
                     val sourceMaterial = Material.matchMaterial(source)
                     if (sourceMaterial == null) {

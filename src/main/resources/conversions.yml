@@ -3,13 +3,30 @@
 # DO NOT USE LEGACY_MATERIAL
 
 # Example Conversion:
-# ConversionBoth:
+#  SimpleConversion:
 #   sources:
 #     - MATERIAL_1
 #     - MATERIAL_2
 #   result:
-#     normal: NONE
+#     normal: RESULT_NORMAL
 #     soul: NONE
+
+# If you want to change the amount/weight of a material you can add -AMOUNT-WEIGHT (including the dashes), you can also add multiple results using this system.
+# Not proving values for weight/amount defaults them to 1.
+
+#  ComplexConversion:
+#   sources:
+#     - MATERIAL_1
+#     - MATERIAL_2
+#   result:
+#     normal:
+#       - RESULT_ONE-1-10 # This would have a 71.4% chance of dropping 1
+#       - RESULT_TWO-2-3 # 21.4% chance of dropping 2
+#       - RESULT_THREE-3-1 # and 7.1% chance of dropping 3
+#     soul:
+#       - RESULT_ONE
+
+# You can figure out the percentage from the weight using the formula WEIGHT/TOTAL_WEIGHTS
 
 WoodToNetherWood:
   sources:
@@ -21,5 +38,7 @@ WoodToNetherWood:
     - OAK_LOG
     - SPRUCE_LOG
   result:
-    normal: CRIMSON_STEM
-    soul: WARPED_STEM
+    normal:
+      - CRIMSON_STEM
+    soul:
+      - WARPED_STEM
