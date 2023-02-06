@@ -61,11 +61,18 @@ class Listener: Listener {
         }
 
         for ((mat, amount) in toSpawn) {
-            val newItem = entity.world.dropItem(entity.location, ItemStack(mat, amount))
-            newItem.isInvulnerable = true
-            newItem.velocity = entity.velocity
-            newItem.thrower = entity.thrower
-            newItem.pickupDelay = entity.pickupDelay
+            var totalSpawned = 0
+
+            while (totalSpawned < amount) {
+                val spawnNow = min(64, amount - totalSpawned)
+                val newItem = entity.world.dropItem(entity.location, ItemStack(mat, spawnNow))
+                newItem.isInvulnerable = true
+                newItem.velocity = entity.velocity
+                newItem.thrower = entity.thrower
+                newItem.pickupDelay = entity.pickupDelay
+
+                totalSpawned += spawnNow
+            }
         }
         entity.remove()
     }
